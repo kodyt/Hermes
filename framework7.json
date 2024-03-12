@@ -1,0 +1,18 @@
+{
+  "cwd": "/Users/kody/Documents/VSCode/Apps/HERMES",
+  "type": [
+    "web"
+  ],
+  "name": "Hermes",
+  "framework": "react",
+  "template": "tabs",
+  "bundler": "vite",
+  "cssPreProcessor": false,
+  "theming": {
+    "customColor": true,
+    "color": "#0f7eb7",
+    "darkMode": false,
+    "iconFonts": true
+  },
+  "customBuild": false
+}
