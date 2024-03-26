@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   Page,
   Navbar,
@@ -12,25 +12,31 @@ import {
   BlockTitle,
   List,
   ListItem,
-  Button
+  Button,
+  View
 } from 'framework7-react';
 
-const HomePage = () => (
+
+
+
+const HomePage = () => {
+  // Would pull from the backend for this info or from the calendar
+  const [reminderData, setReminderData] = useState([
+    { "Time": "3:43 pm", "Label": "Headache" },
+    { "Time": "8:30 pm", "Label": "Take Lisinopril 25mg" },
+  ]);
+
+
+  return (
   <Page name="home">
     {/* Top Navbar */}
     <Navbar large sliding={false}>
-      <NavLeft>
-        <Link iconIos="f7:menu" iconMd="material:menu" panelOpen="left" />
-      </NavLeft>
       <NavTitle sliding>Hermes</NavTitle>
-      <NavRight>
-        <Link iconIos="f7:menu" iconMd="material:menu" panelOpen="right" />
-      </NavRight>
       <NavTitleLarge>Hermes</NavTitleLarge>
     </Navbar>
 
     {/* Page content */}
-    <Block>
+    {/* <Block>
       <p>This is an example of tabs-layout application. The main point of such tabbed layout is that each tab contains independent view with its own routing and navigation.</p>
 
       <p>Each tab/view may have different layout, different navbar type (dynamic, fixed or static) or without navbar like this tab.</p>
@@ -39,21 +45,63 @@ const HomePage = () => (
     <List strong inset dividersIos>
       <ListItem link="/about/" title="About"/>
       <ListItem link="/form/" title="Form"/>
-    </List>
+    </List> */}
 
-    <BlockTitle>Modals</BlockTitle>
+    {/* <BlockTitle>Modals</BlockTitle>
     <Block className="grid grid-cols-2 grid-gap">
       <Button fill popupOpen="#my-popup">Popup</Button>
       <Button fill loginScreenOpen="#my-login-screen">Login Screen</Button>
+    </Block> */}
+
+    <Block strong outline inset color="blue">
+      {
+        reminderData.map((reminder, index) => (
+          <Block>
+            {reminder.Time}, {reminder.Label}<br></br>
+            <Link tabLink="#view-entry">
+              <Button button outline round raised fill>Update</Button>
+            </Link>
+
+          </Block>
+          
+        ))
+      }
     </Block>
 
-    <BlockTitle>Panels</BlockTitle>
+    <BlockTitle>Symptoms</BlockTitle>
     <Block className="grid grid-cols-2 grid-gap">
-      <Button fill panelOpen="left">Left Panel</Button>
-      <Button fill panelOpen="right">Right Panel</Button>
+      <Link tabLink="#view-entry">
+        <Button button outline round raised>Blood Pressure</Button>
+      </Link>
+      <Link tabLink="#view-entry">
+        <Button button outline round raised>Headache</Button>
+      </Link>
+      <Link tabLink="#view-entry">
+        <Button button outline round raised>Nausea</Button>
+      </Link>
+    </Block>
+    
+
+    <BlockTitle>Medication</BlockTitle>
+    <Block className="grid grid-cols-2 grid-gap">
+      <Link tabLink="#view-entry">
+        <Button button outline round raised>Lisinopril</Button>
+      </Link>
+      <Link tabLink="#view-entry">
+        <Button button outline round raised>Acetominophen</Button>
+      </Link>
     </Block>
 
-    <List strong inset dividersIos>
+    <BlockTitle>Wellness</BlockTitle>
+    <Block className="grid grid-cols-2 grid-gap">
+    <Link tabLink="#view-entry">
+        <Button button outline round raised>Sleep</Button>
+      </Link>
+      <Link tabLink="#view-entry">
+        <Button button outline round raised>Mood</Button>
+      </Link>
+    </Block>
+    {/* <List strong inset dividersIos>
       <ListItem
         title="Dynamic (Component) Route"
         link="/dynamic-route/blog/45/post/125/?foo=bar#about"
@@ -66,7 +114,8 @@ const HomePage = () => (
         title="Request Data & Load"
         link="/request-and-load/user/123456/"
       />
-    </List>
+    </List> */}
   </Page>
-);
+  );
+}
 export default HomePage;
