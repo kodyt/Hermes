@@ -19,13 +19,14 @@
   ],
   "dependencies": {
     "dom7": "^4.0.6",
-    "framework7": "^8.3.2",
+    "framework7": "^8.3.3",
     "framework7-icons": "^5.0.5",
     "framework7-react": "^8.3.2",
     "material-icons": "^1.13.12",
     "prop-types": "^15.8.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-infinite-scroll-component": "^6.1.0",
     "skeleton-elements": "^4.0.1",
     "swiper": "^11.0.7"
   },
